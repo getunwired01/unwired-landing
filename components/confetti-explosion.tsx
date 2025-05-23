@@ -19,8 +19,8 @@ export default function ConfettiExplosion({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { width: windowWidth, height: windowHeight } = useWindowSize()
   const particles = useRef<any[]>([])
-  const animationRef = useRef<number>()
-  const timerRef = useRef<NodeJS.Timeout>()
+  const animationRef = useRef<number | undefined>(undefined)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   const createParticles = useCallback(() => {
     const canvas = canvasRef.current
