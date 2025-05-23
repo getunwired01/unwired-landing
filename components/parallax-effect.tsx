@@ -37,8 +37,8 @@ export default function ParallaxEffect() {
             // Apply parallax effect to elements with parallax class
             document.querySelectorAll(".parallax").forEach((element) => {
               const speed = element.getAttribute("data-speed") || "0.1"
-              const yPos = -scrollY * Number.parseFloat(speed)
-              element.style.transform = `translate3d(0, ${yPos}px, 0)`
+              const yPos = -scrollY * Number.parseFloat(speed);
+              (element as HTMLElement).style.transform = `translate3d(0, ${yPos}px, 0)`
             })
 
             lastScrollY = scrollY
