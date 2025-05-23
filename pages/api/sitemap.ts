@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const BASE_URL = 'https://www.getunwired.in' // Replace with your actual domain
+const BASE_URL = process.env.BASE_URL
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const pages = [

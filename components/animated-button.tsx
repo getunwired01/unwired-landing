@@ -26,7 +26,7 @@ export default function AnimatedButton({
   const [isHovered, setIsHovered] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number | undefined>(undefined)
   const childrenRef = useRef<HTMLSpanElement>(null)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
