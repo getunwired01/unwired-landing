@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
 
 export default function Document() {
-    const GA_TRACKING_ID = process.env.GA_TRACKING_ID;
+    const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
   return (
     <Html lang="en">
       <Head>
@@ -19,7 +19,7 @@ export default function Document() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'YOUR_GA_TRACKING_ID', {
+              gtag('config', ${GA_TRACKING_ID}, {
                 page_path: window.location.pathname,
               });
             `,
