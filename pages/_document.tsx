@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
 
 export default function Document() {
-  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID; // Use NEXT_PUBLIC_ prefix for client-side access
+  const GA_TRACKING_ID = 'G-6XJ57YM5VF'; // Use NEXT_PUBLIC_ prefix for client-side access
 
   return (
     <Html lang="en">
