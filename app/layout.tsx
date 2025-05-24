@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import PreloadResources from "@/components/preload-resources"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 // Load Inter font with preload
 const inter = Inter({
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
   },
     generator: 'v0.dev'
 }
-
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+console.log("GA_TRACKING_ID", GA_TRACKING_ID);
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
@@ -32,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PreloadResources />
         {children}
       </body>
+      <GoogleAnalytics gaId={`${GA_TRACKING_ID}`} />
     </html>
   )
 }
