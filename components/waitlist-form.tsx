@@ -37,6 +37,28 @@ export default function WaitlistForm({ children, triggerClassName, fullForm = fa
 
   const formRef = useRef<HTMLFormElement>(null)
 
+  async function sendEmail(name: string, email: string) {
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to send email");
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error("Error sending email:", error);
+      throw error;
+    } 
+  }  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -50,7 +72,8 @@ export default function WaitlistForm({ children, triggerClassName, fullForm = fa
       await submitWaitlistForm(formDataObj)
       setIsSuccess(true)
       setShowConfetti(true)
-
+      console.log("formdataObj", formDataObj,formData) 
+      sendEmail(formData.name, formData.email);
       // Reset form after 5 seconds if it's the full form
       if (fullForm) {
         setTimeout(() => {
@@ -156,9 +179,9 @@ export default function WaitlistForm({ children, triggerClassName, fullForm = fa
           <DialogTitle className="text-xl gradient-text">Join Our Waitlist</DialogTitle>
           <DialogDescription className="text-zinc-400">
             Be among the first to experience UnWired's revolutionary wireless EV charging. <br />
-            <p className="mt-2 items-center text-primary font-semibold text-sm uppercase tracking-wider bg-primary/10 inline-block py-1 px-3 rounded-full border border-primary/30 animate-pulse-slow">
+            <span className="mt-2 items-center text-primary font-semibold text-sm uppercase tracking-wider bg-primary/10 inline-block py-1 px-3 rounded-full border border-primary/30 animate-pulse-slow">
               Limited Slots Available
-            </p>
+            </span>
           </DialogDescription>
         </DialogHeader>
         {formContent}

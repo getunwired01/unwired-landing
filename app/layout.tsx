@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 import PreloadResources from "@/components/preload-resources"
 import { GoogleAnalytics } from "@next/third-parties/google"
 
@@ -32,7 +34,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <PreloadResources />
+        <Header />
         {children}
+        <Footer />
       </body>
       <GoogleAnalytics gaId={`${GA_TRACKING_ID}`} />
     </html>

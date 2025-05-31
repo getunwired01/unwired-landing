@@ -1,42 +1,50 @@
-"use client"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, ChevronRight, Shield, Zap, Sparkles } from "lucide-react"
-import WaitlistForm from "@/components/waitlist-form"
-import Stars from "@/components/stars"
-import Planet from "@/components/planet"
-import ScrollAnimations from "@/components/scroll-animations"
-import ParallaxEffect from "@/components/parallax-effect"
-import AnimatedButton from "@/components/animated-button"
-import SectionDivider from "@/components/section-divider"
-import ScrollProgress from "@/components/scroll-progress"
-import React from 'react'
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ChevronRight, Shield, Zap, Sparkles } from "lucide-react";
+import WaitlistForm from "@/components/waitlist-form";
+import Stars from "@/components/stars";
+import Planet from "@/components/planet";
+import ScrollAnimations from "@/components/scroll-animations";
+import ParallaxEffect from "@/components/parallax-effect";
+import AnimatedButton from "@/components/animated-button";
+import SectionDivider from "@/components/section-divider";
+import ScrollProgress from "@/components/scroll-progress";
+import React, { useState } from "react";
 
 export default function LandingPage() {
-  const unwiredDemoUrl = process.env.NEXT_PUBLIC_DEMO_URL || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-  
+  const unwiredDemoUrl =
+    process.env.NEXT_PUBLIC_DEMO_URL ||
+    "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Embed URL for YouTube
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
   const trackJoinWaitlistClick = () => {
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      window.gtag('event', 'click', {
-        event_category: 'Button',
-        event_label: 'Join Waitlist',
-      })
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "click", {
+        event_category: "Button",
+        event_label: "Join Waitlist",
+      });
     } else {
-      console.warn('Google Analytics is not initialized.')
+      console.warn("Google Analytics is not initialized.");
     }
-  }
+  };
 
   const trackVideoClick = () => {
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      window.gtag('event', 'click', {
-        event_category: 'Video',
-        event_label: 'Watch Demo',
-      })
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "click", {
+        event_category: "Video",
+        event_label: "Watch Demo",
+      });
     } else {
-      console.warn('Google Analytics is not initialized.')
+      console.warn("Google Analytics is not initialized.");
     }
-  }
+    setIsModalOpen(true); // Open the modal when the button is clicked
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+  };
 
   return (
     <div className="flex min-h-screen flex-col cosmic-bg">
@@ -46,48 +54,9 @@ export default function LandingPage() {
       <ScrollAnimations />
       <ParallaxEffect />
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-background/50 border-b border-zinc-800/50">
-        <div className="container flex h-20 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center glow-effect">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UnWired%21%20-%201%20-%20Edited-ZcLKut7EQ7nzj3Th1CctmZvDjZ2mno.png"
-                alt="UnWired Logo"
-                width={180}
-                height={60}
-                className="h-10 w-auto transition-transform duration-300 hover:scale-105"
-                priority
-              />
-            </Link>
-          </div>
-          <nav className="hidden md:flex gap-8">
-            <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-white nav-link">
-              Features
-            </Link>
-            <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-white nav-link">
-              How It Works
-            </Link>
-            <Link href="#solutions" className="text-sm font-medium text-zinc-400 hover:text-white nav-link">
-              Solutions
-            </Link>
-            <Link href="#about" className="text-sm font-medium text-zinc-400 hover:text-white nav-link">
-              About
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <WaitlistForm triggerClassName="inline-flex">
-              <AnimatedButton onClick={trackJoinWaitlistClick}>
-                Join Waitlist <ChevronRight className="h-4 w-4" />
-              </AnimatedButton>
-            </WaitlistForm>
-          </div>
-        </div>
-      </header>
-
-      <main className="flex-1 relative z-10">
+      <main id="home" className="flex-1 relative z-10">
         {/* Hero Section */}
-        <section className="w-full py-24 md:py-32 lg:py-40 xl:py-48 relative overflow-hidden">
+        <section id="about" className="w-full py-28 relative overflow-hidden">
           {/* Add animated particles background */}
           <div className="absolute inset-0 z-0">
             <div className="hero-particles"></div>
@@ -104,7 +73,7 @@ export default function LandingPage() {
                 <span className="text-xs font-medium text-primary opacity-90">Introducing Wireless EV Charging</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
-                <span className="block fade-up animate-once hero-text-reveal">Charging beyond</span>
+                <span className="block fade-up animate-once hero-text-reveal">Charge EVs beyond</span>
                 <span className="gradient-text fade-up animate-once delay-200 hero-text-reveal hero-gradient-text">
                   imagination
                 </span>
@@ -168,7 +137,7 @@ export default function LandingPage() {
         <SectionDivider />
 
         {/* Features Section */}
-        <section id="features" className="w-full py-20 md:py-32 relative">
+        <section id="features" className="w-full relative">
           {/* Add section transitions at top and bottom */}
 
           <div className="container px-4 md:px-6 relative z-10">
@@ -191,6 +160,15 @@ export default function LandingPage() {
                   Simply park your vehicle over the charging pad and charging begins automatically. No cables, no
                   hassle.
                 </p>
+                <div className="py-4">
+                  <Image
+                    src="/effortless-charging.png" // Replace with your placeholder image URL
+                    alt="Effortless Charging"
+                    width={400}
+                    height={300}
+                    className="rounded-lg mb-4"
+                  />
+                </div>
               </div>
               <div className="feature-card rounded-2xl p-8 fade-up delay-400">
                 <div className="icon-container rounded-full bg-primary/5 p-4 mb-6 inline-block">
@@ -198,17 +176,36 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Enhanced Safety</h3>
                 <p className="text-zinc-400">
-                  No more tripping hazards from cables. Our wireless solution is safe, reliable, and weatherproof.
+                  No more tripping hazards from cables or maintenance worries. Our wireless solution is safe, reliable, and weatherproof. 
                 </p>
+                <div className="py-4">
+                  <Image
+                    src="/unwired-charger.jpeg" // Replace with your placeholder image URL
+                    alt="Enhanced Safety"
+                    width={400}
+                    height={300}
+                    className="rounded-lg mb-4"
+                  />
+                </div>
               </div>
               <div className="feature-card rounded-2xl p-8 fade-up delay-500">
                 <div className="icon-container rounded-full bg-primary/5 p-4 mb-6 inline-block">
                   <Sparkles className="h-8 w-8 text-primary opacity-80" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Aesthetic Excellence</h3>
+                <h3 className="text-xl font-bold mb-3">Seamless Payments</h3>
                 <p className="text-zinc-400">
-                  Keep your space clean and clutter-free. Our sleek design integrates seamlessly with your environment.
+                  Integrated payment options allow you to pay for charging directly through our mobile app, making it
+                  convenient and secure.
                 </p>
+                <div className="py-4">
+                  <Image
+                    src="/app-mock-1.png" // Replace with your placeholder image URL
+                    alt="Seamless payments"
+                    width={400}
+                    height={300}
+                    className="rounded-lg mb-4"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -217,7 +214,7 @@ export default function LandingPage() {
         <SectionDivider />
 
         {/* How It Works Section */}
-        <section id="how-it-works" className="w-full py-20 md:py-32 relative">
+        <section id="how-it-works" className="w-full py-6 relative">
           {/* Add section transitions at top and bottom */}
 
           <div className="container px-4 md:px-6 relative z-10">
@@ -268,7 +265,7 @@ export default function LandingPage() {
         <SectionDivider />
 
         {/* Solutions Section */}
-        <section id="solutions" className="w-full py-20 md:py-32 relative">
+        <section id="solutions" className="w-full py-6 relative">
           {/* Add section transitions at top and bottom */}
 
           <div className="container px-4 md:px-6 relative z-10">
@@ -286,7 +283,7 @@ export default function LandingPage() {
             <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
               <div className="feature-card rounded-2xl p-8 fade-up delay-300">
                 <Image
-                  src="/home-charging.png" // Replace with your placeholder image URL
+                  src="/home-charging-3.jpg" // Replace with your placeholder image URL
                   alt="Home Charging"
                   width={400}
                   height={300}
@@ -304,16 +301,15 @@ export default function LandingPage() {
               </div>
               <div className="feature-card rounded-2xl p-8 fade-up delay-400">
                 <Image
-                  src="/fleet-management.png" // Replace with your placeholder image URL
-                  alt="Fleet Management"
+                  src="/public-charging-1.jpg" // Replace with your placeholder image URL
+                  alt="Public Charging"
                   width={400}
                   height={300}
                   className="rounded-lg mb-4"
                 />
-                <h3 className="text-xl font-bold mb-3">Fleet Management</h3>
+                <h3 className="text-xl font-bold mb-3">Public Charging</h3>
                 <p className="text-zinc-400 mb-4">
-                  Streamline operations for business fleets with multiple charging stations in your depot or parking
-                  facility.
+                Enhance urban infrastructure with accessible wireless charging points. Perfect for business centers, or public garages.
                 </p>
                 <div className="flex items-center text-primary opacity-90 text-sm font-medium">
                   <span>Learn more</span>
@@ -322,7 +318,7 @@ export default function LandingPage() {
               </div>
               <div className="feature-card rounded-2xl p-8 fade-up delay-500">
                 <Image
-                  src="/property-development.png" // Replace with your placeholder image URL
+                  src="/prop-dev-1.jpg" // Replace with your placeholder image URL
                   alt="Property Development"
                   width={400}
                   height={300}
@@ -345,20 +341,24 @@ export default function LandingPage() {
         <SectionDivider />
 
         {/* Demo Section */}
-        <section className="w-full py-20 md:py-32 relative overflow-hidden">
+        <section className="w-full py-10 md:py-16 relative overflow-hidden">
           <div className="container px-4 md:px-6 relative z-10">
             <div className="max-w-5xl mx-auto">
               <div className="grid gap-12 lg:grid-cols-2 items-center">
                 <div className="space-y-6 fade-up">
                   <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
-                    <span className="text-xs font-medium text-primary opacity-90">Technology</span>
+                    <span className="text-xs font-medium text-primary opacity-90">
+                      Technology
+                    </span>
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
-                    Advanced Induction <span className="gradient-text">Technology</span>
+                    Advanced Induction{" "}
+                    <span className="gradient-text">Technology</span>
                   </h2>
                   <p className="text-zinc-400 text-lg">
-                    Our proprietary induction system transfers power efficiently and safely, with built-in alignment
-                    assistance to ensure optimal charging every time.
+                    Our proprietary induction system transfers power efficiently
+                    and safely, with built-in alignment assistance to ensure
+                    optimal charging every time.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3">
@@ -377,7 +377,7 @@ export default function LandingPage() {
                           />
                         </svg>
                       </div>
-                      <span className="text-zinc-300">Up to 11kW charging power</span>
+                      <span className="text-zinc-300">Up to 24kW charging power</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="rounded-full bg-primary/10 p-1">
@@ -421,6 +421,7 @@ export default function LandingPage() {
                       Watch Demo <ChevronRight className="h-4 w-4 ml-1" />
                     </AnimatedButton>
                   </div>
+                  
                 </div>
                 <div className="relative fade-in delay-300" >
                   <div className="absolute -inset-px bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl blur-xl opacity-50 animate-pulse"></div>
@@ -444,10 +445,34 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Modal for YouTube Video */}
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+            <div className="relative w-full max-w-4xl">
+              <button
+                className="absolute top-2 right-2 text-white bg-black/50 rounded-full p-2 hover:bg-black/70"
+                onClick={closeModal}
+              >
+                ✕
+              </button>
+              <iframe
+                width="100%"
+                height="500"
+                src={unwiredDemoUrl}
+                title="UnWired Wireless EV Charging Demo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+              ></iframe>
+            </div>
+          </div>
+        )}
+
         <SectionDivider />
 
         {/* Final CTA Section */}
-        <section className="w-full py-20 md:py-32 relative overflow-hidden">
+        <section className="w-full py-10 md:py-16 relative overflow-hidden">
           {/* Add section transition at the top */}
 
           {/* Update the background overlay to be more subtle */}
@@ -478,11 +503,12 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-zinc-800/50 backdrop-blur-lg bg-background/50 py-12 relative z-10">
+      
+      {/* <footer className="w-full border-t border-zinc-800/50 backdrop-blur-lg bg-background/50 py-12 relative z-10">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5"> */}
             {/* Company Information */}
-            <div className="space-y-4 lg:col-span-2">
+            {/* <div className="space-y-4 lg:col-span-2">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UnWired%21%20-%201%20-%20Edited-ZcLKut7EQ7nzj3Th1CctmZvDjZ2mno.png"
                 alt="UnWired Logo"
@@ -523,10 +549,10 @@ export default function LandingPage() {
                   <span className="sr-only">LinkedIn</span>
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             {/* Product Column */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h3 className="text-sm font-medium text-white">Product</h3>
               <ul className="space-y-3">
                 <li>
@@ -550,14 +576,14 @@ export default function LandingPage() {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* Company Column */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h3 className="text-sm font-medium text-white">Company</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="#about" className="text-sm text-zinc-400 hover:text-primary transition-colors">
+                  <Link href="/about" className="text-sm text-zinc-400 hover:text-primary transition-colors">
                     About
                   </Link>
                 </li>
@@ -577,10 +603,10 @@ export default function LandingPage() {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* Legal Column */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h3 className="text-sm font-medium text-white">Legal</h3>
               <ul className="space-y-3">
                 <li>
@@ -600,14 +626,14 @@ export default function LandingPage() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
 
           {/* Copyright Section */}
-          <div className="mt-12 pt-8 border-t border-zinc-800/50 text-center md:text-left">
+          {/* <div className="mt-12 pt-8 border-t border-zinc-800/50 text-center md:text-left">
             <p className="text-sm text-zinc-500">© {new Date().getFullYear()} UnWired. All rights reserved.</p>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
-  )
+  );
 }
