@@ -53,13 +53,15 @@ function handleMenuClick({ e, menuId }: { e: React.MouseEvent<HTMLAnchorElement,
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center glow-effect">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UnWired%21%20-%201%20-%20Edited-ZcLKut7EQ7nzj3Th1CctmZvDjZ2mno.png"
+              src="/unwired-new-logo.png"
               alt="UnWired Logo"
-              width={180}
-              height={60}
+              width={380}
+              height={100}
               className="h-10 w-auto transition-transform duration-300 hover:scale-105"
               priority
             />
+            <span className="text-3xl pt-3 font-bold text-[#eae9e7]">unwired</span>
+
           </Link>
         </div>
         <nav className="hidden md:flex gap-8">

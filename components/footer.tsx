@@ -10,13 +10,16 @@ export default function Footer() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5"> 
             {/* Company Information */}
             <div className="space-y-4 lg:col-span-2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UnWired%21%20-%201%20-%20Edited-ZcLKut7EQ7nzj3Th1CctmZvDjZ2mno.png"
-                alt="UnWired Logo"
-                width={150}
-                height={50}
-                className="h-10 w-auto"
-              />
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/unwired-new-logo.png"
+                  alt="UnWired Logo"
+                  width={150}
+                  height={50}
+                  className="h-10 w-auto"
+                />
+                <span className="text-3xl pt-3 font-bold text-[#eae9e7]">unwired</span>
+              </div>
               <p className="text-sm text-zinc-400">
                 UnWired is revolutionizing electric vehicle charging with our innovative wireless solutions. We're
                 committed to creating a sustainable future through cutting-edge technology that makes EV ownership more
