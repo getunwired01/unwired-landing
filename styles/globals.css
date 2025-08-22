@@ -10,7 +10,11 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
 }
+
 
 @layer base {
   :root {

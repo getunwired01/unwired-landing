@@ -65,71 +65,114 @@ export default function LandingPage() {
           {/* Add animated gradient overlay */}
           <div className="absolute inset-0 z-0 hero-gradient-overlay"></div>
 
-          {/* Add section transition at the bottom */}
+          <div className="container px-4 md:px-6 relative z-10 flex justify-between">
+            <div className="w-1/2 pr-8">
+              {/* Add section transition at the bottom */}
 
-          <div className="container px-4 md:px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm fade-in animate-once animate-pulse-slow">
-                <span className="text-xs font-medium text-primary opacity-90">Introducing Wireless EV Charging</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
-                <span className="block fade-up animate-once hero-text-reveal">Charge EVs beyond</span>
-                <span className="gradient-text fade-up animate-once delay-200 hero-text-reveal hero-gradient-text">
-                  imagination
-                </span>
-                <span className="block mt-2 fade-up animate-once delay-400 hero-text-reveal">one park away.</span>
-              </h1>
-              <p className="max-w-[600px] mx-auto text-zinc-400 text-lg md:text-xl fade-up animate-once delay-500 hero-text-reveal">
-                Say goodbye to cables and hello to seamless charging. UnWired offers a premium wireless EV charging
-                solution for modern electric vehicles, designed for the future of mobility.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 fade-up animate-once delay-500">
-                <WaitlistForm triggerClassName="inline-flex">
-                  <AnimatedButton className="hero-cta-button" onClick={trackJoinWaitlistClick}>
-                    Join Waitlist <ArrowRight className="h-5 w-5 ml-2 hero-icon-float" />
-                  </AnimatedButton>
-                </WaitlistForm>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-14 px-8 rounded-full text-base font-medium border-zinc-700 bg-background/50 backdrop-blur-sm hover:bg-zinc-800/70 hover:text-purple-300 transition-colors relative overflow-hidden group"
-                >
-                  <Link href="#how-it-works" className="flex items-center justify-center w-full h-full z-10 relative">
-                    Learn More
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/10 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-                  </Link>
-                </Button>
+              <div className="max-w-4xl mx-auto text-center space-y-8">
+                <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm fade-in animate-once animate-pulse-slow">
+                  <span className="text-xs font-medium text-primary opacity-90">Introducing Wireless EV Charging</span>
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
+                  <span className="block fade-up animate-once hero-text-reveal">Charge EVs</span>
+                  <span className="gradient-text fade-up animate-once delay-200 hero-text-reveal hero-gradient-text">
+                    wirelessly
+                  </span>
+                  <span className="block mt-2 fade-up animate-once delay-400 hero-text-reveal">one park away</span>
+                </h1>
+                <p className="max-w-[600px] mx-auto text-zinc-400 text-lg md:text-xl fade-up animate-once delay-500 hero-text-reveal">
+                  Say goodbye to cables and hello to seamless charging. UnWired offers a premium wireless EV charging
+                  solution for modern electric vehicles, designed for the future of mobility.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 fade-up animate-once delay-500">
+                  <WaitlistForm triggerClassName="inline-flex">
+                    <AnimatedButton className="hero-cta-button" onClick={trackJoinWaitlistClick}>
+                      Join Waitlist <ArrowRight className="h-5 w-5 ml-2 hero-icon-float" />
+                    </AnimatedButton>
+                  </WaitlistForm>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="h-14 px-8 rounded-full text-base font-medium border-zinc-700 bg-background/50 backdrop-blur-sm hover:bg-zinc-800/70 hover:text-purple-300 transition-colors relative overflow-hidden group"
+                  >
+                    <Link href="#how-it-works" className="flex items-center justify-center w-full h-full z-10 relative">
+                      Learn More
+                      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/10 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+                    </Link>
+                  </Button>
+                </div>
+
               </div>
             </div>
 
-            <div className="mt-20 md:mt-32 max-w-5xl mx-auto relative fade-in animate-once delay-700">
-              <div className="absolute -inset-px bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl blur-xl opacity-50 animate-pulse hero-image-glow-enhanced"></div>
-              <div className="relative z-10 flex justify-center">
-                <div className="floating w-full hero-image-container">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UnwiredHeroImage.jpg-f8AOnT5agelX5ThPXCBoLTAedgym1T.jpeg"
-                    alt="Electric Vehicle with glowing headlights on a dark road"
-                    width={800}
-                    height={450}
-                    className="w-full rounded-2xl shadow-2xl hero-image-glow hero-image-parallax"
-                    priority
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center transform translate-y-[200%]">
-                    <div className="bg-black/70 backdrop-blur-sm px-6 py-3 rounded-lg border border-primary/20 text-center hero-badge-float">
-                      <p className="text-primary opacity-90 font-medium">Wireless charging for modern EVs</p>
+            <div className="w-1/2 pl-8">
+              <div className="relative w-full h-full">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UnwiredHeroImage.jpg-f8AOnT5agelX5ThPXCBoLTAedgym1T.jpeg"
+                  alt="Electric Vehicle with glowing headlights on a dark road"
+                  width={800}
+                  height={500}
+                  className="w-full rounded-2xl shadow-2xl hero-image-glow hero-image-parallax animate-spin-slow"
+                  priority
+                />
+                <div className="flex flex-row gap-2 justify-center mt-4 fade-up animate-once delay-500">
+                  {/* Review 1 */}
+                  <div className="bg-white rounded-lg shadow-md flex items-center px-3 py-2 max-w-xs h-24 min-h-0">
+                    <div className="mr-2">
+                      <img src="/review-woman.jpg" alt="Jane Doe" className="w-8 h-8 rounded-full object-cover" />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <div className="flex items-center gap-1">
+  <p className="text-xs font-semibold text-zinc-800 leading-tight">Deepa S</p>
+  {[0,1,2,3,4].map(i => (
+    <span key={i} className={`inline-block animate-bounce`} style={{ animationDelay: `${i * 0.1}s` }}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </svg>
+    </span>
+  ))}
+</div>
+                      <p className="text-xs text-zinc-500 leading-snug line-clamp-2">I have joined waitlist for Unwired and I am excited to try it out. </p>
                     </div>
                   </div>
-
-                  {/* Add animated energy circles with reduced opacity */}
-                  <div className="hero-energy-circle hero-energy-circle-1"></div>
-                  <div className="hero-energy-circle hero-energy-circle-2"></div>
-                  <div className="hero-energy-circle hero-energy-circle-3"></div>
+                  {/* Review 2 */}
+                  <div className="bg-white rounded-lg shadow-md flex items-center px-3 py-2 max-w-xs h-24 min-h-0">
+                    <div className="mr-2">
+                      <img src="review-man.jpg" alt="Rajesh Kunar" className="w-8 h-8 rounded-full object-cover" />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <div className="flex items-center gap-1">
+  <p className="text-xs font-semibold text-zinc-800 leading-tight">Rajesh Kumar</p>
+  {[0,1,2,3,4].map(i => (
+    <span key={i} className={`inline-block animate-bounce`} style={{ animationDelay: `${i * 0.1}s` }}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </svg>
+    </span>
+  ))}
+</div>
+                      <p className="text-xs text-zinc-500 leading-snug line-clamp-2">Unwired will solve my problem of not being able to charge my EV.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 fade-in animate-once delay-1000">
-              <div className="scroll-indicator hero-scroll-indicator"></div>
+              {/* Reviews moved below the product image */}
+              {/* <div className="flex flex-col sm:flex-row-reverse gap-4 justify-center mt-8 fade-up animate-once delay-500">
+                <div className="flex flex-col items-end space-y-2">
+                  <div className="bg-white p-4 rounded-md shadow-lg">
+                    <p className="text-lg font-medium">Jane Doe</p>
+                    <p className="text-sm text-zinc-500">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                  <div className="bg-white p-4 rounded-md shadow-lg">
+                    <p className="text-lg font-medium">John Doe</p>
+                    <p className="text-sm text-zinc-500">
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </section>
