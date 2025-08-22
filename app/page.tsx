@@ -71,7 +71,7 @@ export default function LandingPage() {
 
               <div className="max-w-4xl mx-auto text-center space-y-8">
                 <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm fade-in animate-once animate-pulse-slow">
-                  <span className="text-xs font-medium text-primary opacity-90">Introducing Wireless EV Charging</span>
+                  <span className="text-md font-medium text-primary opacity-90">Hurry Up! Limited slots available!</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
                   <span className="block fade-up animate-once hero-text-reveal">Charge EVs</span>
